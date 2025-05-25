@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de IP</title>
+</head>
+<body>
+    <h1>Calculadora de IP</h1>
+    <form action="/calcular" method="post">
+        <label>Endereço IP:</label>
+        <input type="text" name="ip" required placeholder="Ex: 192.168.0.1"><br><br>
+
+        <label>Máscara CIDR:</label>
+        <input type="text" name="cidr" required placeholder="Ex: 24"><br><br>
+
+        <button type="submit">Calcular</button>
+    </form>
+
+    {% if resultado %}
+        <h2>Resultado:</h2>
+        <p><strong>Endereço de Rede:</strong> {{ rede }}</p>
+        <p><strong>Broadcast:</strong> {{ broadcast }}</p>
+        <p><strong>Total de Hosts:</strong> {{ total_hosts }}</p>
+        <p><strong>Primeiro Host:</strong> {{ primeiro_host }}</p>
+        <p><strong>Último Host:</strong> {{ ultimo_host }}</p>
+    {% elif erro %}
+        <p style="color:red;">Erro: {{ erro }}</p>
+    {% endif %}
+</body>
+</html>
